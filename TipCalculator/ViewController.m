@@ -13,9 +13,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *billAmountTextField;
 @property (weak, nonatomic) IBOutlet UILabel *tipAmountLabel;
 
-@property (nonatomic, assign) int billAmountInDollars;
-@property (nonatomic, assign) int tipAmountInDollars;
+@property (nonatomic, assign) float billAmountInDollars;
+@property (nonatomic, assign) float tipAmountInDollars;
 @property (nonatomic) NSString *userInput;
+@property (nonatomic) NSString *tipAmountString;
 
 
 @end
@@ -25,8 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.billAmountInDollars = 0.0;
-    
-    
     
     
 }
@@ -40,9 +39,15 @@
     self.billAmountInDollars = [usersInput intValue];
 
     //Calculate Tip Amount
-    self.tipAmountInDollars = self.billAmountInDollars + 15;
+    self.tipAmountInDollars = (self.billAmountInDollars * 15)/100;
 
-    NSLog(@"tip amount in $: %d", self.tipAmountInDollars);
+    NSLog(@"tip amount in $: %f", self.tipAmountInDollars);
+   
+    NSString *tipAmountString = [NSString stringWithFormat:@"Tip is: %.02f", self.tipAmountInDollars];
+    NSLog(@"tip string: %@ ", tipAmountString);
+    [self.tipAmountLabel setText:tipAmountString];
+    
+    NSLog(@"new label text: %@ ", self.tipAmountLabel.text);
 }
 
 
