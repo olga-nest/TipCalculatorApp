@@ -56,6 +56,7 @@
     
     [self.billAmountTextField setText:@""];
     [self.tipAmountTextField setText:@""];
+    [self.tipAmountTextField resignFirstResponder];
 }
 
 - (void)setupTextField
