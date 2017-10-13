@@ -32,19 +32,10 @@
 }
 
 - (IBAction)calculateTip:(UIButton *)sender {
-    // Get the user's Amount input
-    //TODO: Move to separate function
-    NSString *usersInputAmount;
-    usersInputAmount = self.billAmountTextField.text;
-    NSLog(@"user's Amount input: %@", usersInputAmount);
-    self.billAmountInDollars = [usersInputAmount intValue];
+  
+    [self getUsersAmountInput];
+    [self getUsersTipInput];
 
-    //Get the user's Tip % input
-    NSString *usersInputTip;
-    usersInputTip = self.tipAmountTextField.text;
-    NSLog(@"user's Tip input: %@", usersInputTip);
-    self.tipPercentage = [usersInputTip intValue];
-    
     //Calculate Tip Amount
     self.tipAmountInDollars = (self.billAmountInDollars * self.tipPercentage)/100;
 
@@ -67,6 +58,22 @@
     
     self.tipAmountTextField.keyboardType = UIKeyboardTypePhonePad;
     self.tipAmountTextField.clearButtonMode = UITextFieldViewModeUnlessEditing;
+
+}
+
+-(void)getUsersAmountInput {
+    NSString *usersInputAmount;
+    usersInputAmount = self.billAmountTextField.text;
+    NSLog(@"user's Amount input: %@", usersInputAmount);
+    self.billAmountInDollars = [usersInputAmount intValue];
+
+}
+
+-(void)getUsersTipInput {
+    NSString *usersInputTip;
+    usersInputTip = self.tipAmountTextField.text;
+    NSLog(@"user's Tip input: %@", usersInputTip);
+    self.tipPercentage = [usersInputTip intValue];
 
 }
 
